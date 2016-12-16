@@ -14,5 +14,5 @@ vim:
      
      
      Plugins:
-        NerdTree:https://github.com/scrooloose/nerdtree
+        NerdTree: https://github.com/scrooloose/nerdtree
         Sensiblevim: https://github.com/tpope/vim-sensible

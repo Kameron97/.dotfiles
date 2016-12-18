@@ -1,7 +1,18 @@
+
+
 execute pathogen#infect()
 filetype plugin indent on
 set number
+set mouse =a
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
+"auto indenting"
+filetype indent on
+set smartindent
+autocmd BufRead,BufWritePre *.sh normal gg=G
+
+
+"=================THEMES================"
 syntax on
 " Use vim with light color theme
 set background=dark
@@ -61,9 +72,62 @@ set cursorline
 
 
 
-
-
+"=====================PLUGINS=============================="
+"sensible vim"
 runtime! plugin/sensible.vim
 
+"NerdTree"
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+
+"NerdCommenter"
+filetype plugin on
+
+"Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_loc_list_height = 5
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
+let g:syntastic_javascript_checkers = ['eslint']
+
+let g:syntastic_error_symbol = '❌'
+let g:syntastic_style_error_symbol = '⁉️'
+let g:syntastic_warning_symbol = '⚠️'
+let g:syntastic_style_warning_symbol = '💩'
+
+highlight link SyntasticErrorSign SignColumn
+highlight link SyntasticWarningSign SignColumn
+highlight link SyntasticStyleErrorSign SignColumn
+highlight link SyntasticStyleWarningSign SignColumn
+
+
+
+
+"Lightline"
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ }
+
+"Easy Motion""
+
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+nmap s <Plug>(easymotion-overwin-f)
+nmap s <Plug>(easymotion-overwin-f2)
+let g:EasyMotion_smartcase = 1
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+
+"AIRLINE"
+set laststatus=2
+
+"UNDOTREE"
+if has("persistent_undo")
+	    set undodir=~/.undodir/
+	        set undofile
+	endif

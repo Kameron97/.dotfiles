@@ -16,3 +16,10 @@ vim:
      Plugins:
         NerdTree: https://github.com/scrooloose/nerdtree
         Sensiblevim: https://github.com/tpope/vim-sensible
+        syntastic  https://github.com/vim-syntastic/syntastic
+        vim-airline  https://github.com/vim-airline/vim-airline
+        vim-fugitive  https://github.com/tpope/vim-fugitive
+        undotree    https://github.com/mbbill/undotree
+        easymotion  https://github.com/easymotion/vim-easymotion
+        polyglot  https://github.com/sheerun/vim-polyglot
+        YouCompleteMe   https://github.com/Valloric/YouCompleteMe

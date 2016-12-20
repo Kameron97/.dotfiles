@@ -242,7 +242,7 @@ type = internal/date
 interval = 5
 
 date =
-date-alt = "%A %Y-%m-%d"
+date-alt = "%A "%m/%d/%Y"
 
 time = %l:%M:%S
 time-alt = %l:%M:%S
@@ -297,6 +297,8 @@ format-discharging-underline = #ffb52a
 
 format-discharging = <ramp-capacity> <label-discharging>
 label-charging = Charging %percentage% %time%
+
+
 
 
 label-discharging = Discharging %percentage% %time%

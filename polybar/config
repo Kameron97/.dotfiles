@@ -395,4 +395,4 @@ menu-2-0 = Shutdown
 menu-2-0-exec =  poweroff
 
 menu-3-0 = Lock
-menu-3-0-exec = i3lock
+menu-3-0-exec = dm-tool lock 

@@ -129,3 +129,6 @@ if has("persistent_undo")
 	    set undodir=~/.undodir/
 	        set undofile
 	endif
+	
+"CTRLP"
+set runtimepath^=~/.vim/bundle/ctrlp.vim

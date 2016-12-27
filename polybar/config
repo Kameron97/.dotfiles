@@ -17,14 +17,14 @@ secondary = #e60053
 alert = #bd2c40
 
 [global/wm]
-margin-top = 5
-margin-bottom = 5
+margin-top = 3
+margin-bottom = 3
 
 [bar/example]
 ;monitor = ${env:MONITOR:HDMI-1}
 bottom = true
 width = 100%
-height = 27
+height = 20
 offset-x = 0
 offset-y = 0
 
@@ -47,12 +47,12 @@ module-margin-left = 1
 module-margin-right = 2
 
 font-0 = fixed:pixelsize=10;0
-font-1 = ttf-symbola:size=6:heavy:fontformat=truetype;-2
+font-1 = unifont:size=6:heavy:fontformat=truetype;-2
 font-2 = siji:pixelsize=10;0
 
 modules-left = bspwm i3 xwindow
 modules-center =
-modules-right = backlight volume  memory cpu wlan eth battery  temperature date powermenu
+modules-right = backlight volume filesystem memory cpu wlan eth battery  temperature date powermenu
 
 tray-position = right
 tray-padding = 2
@@ -91,18 +91,39 @@ label-indicator-underline = ${colors.secondary}
 
 [module/filesystem]
 type = internal/fs
-interval = 25
 
+; Mountpoints to display
 mount-0 = /
-mount-1 = /home
-mount-2 = /invalid/mountpoint
+;mount-1 = /home
+;mount-2 = /var
 
-label-mounted = %mountpoint%: %percentage_free%
+; Seconds to sleep between updates
+; Default: 30
+interval = 10
 
-label-unmounted = %mountpoint%: not mounted
-label-unmounted-foreground = ${colors.foreground-alt}
+; Display fixed precision values
+; Default: false
+fixed-values = true
+
+; Spacing between entries
+; Default: 2
+spacing = 4
+
+format-mounted-prefix = " "
+format-mounted-prefix-foreground = ${root.foreground}
+
+format-mounted = <label-mounted>
+
+label-mounted =  %used% / %total%
+format-mounted-underline = #4bffdc
+
+
+
+
+
 
 [module/bspwm]
+
 type = internal/bspwm
 ws-icon-default = x
 
@@ -174,7 +195,11 @@ toggle-off-foreground = #66
 type = internal/xbacklight
 
 format = <label> <bar>
-label = BL
+label = 
+label-foreground = ${root.foreground}
+
+
+
 
 bar-width = 10
 bar-indicator = │
@@ -191,15 +216,15 @@ bar-empty-foreground = ${colors.foreground-alt}
 type = internal/cpu
 interval = 2
 format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-foreground = ${root.foreground}
 format-underline = #f90000
 label = %percentage%
 
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " "
-format-prefix-foreground = #4bffdc
+format-prefix = " "
+format-prefix-foreground = ${root.foreground}
 format-underline = #4bffdc
 label = %percentage_used%
 
@@ -221,7 +246,7 @@ ramp-signal-1 = 
 ramp-signal-2 = 
 ramp-signal-3 = 
 ramp-signal-4 = 
-ramp-signal-foreground = ${colors.foreground-alt}
+ramp-signal-foreground = ${root.foreground}
 
 [module/eth]
 type = internal/network
@@ -241,14 +266,12 @@ label-disconnected-foreground = ${colors.foreground-alt}
 type = internal/date
 interval = 5
 
-date =
-date-alt = "%A "%m/%d/%Y"
+date = " %A, %m/%d/%Y"
 
-time = %l:%M:%S
-time-alt = %l:%M:%S
+time = %l:%M:%S %p
 
-format-prefix = 
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix = 
+format-prefix-foreground = ${root.foreground}
 format-underline = #0a6cf5
 
 label = %date% %time%
@@ -256,8 +279,10 @@ label = %date% %time%
 [module/volume]
 type = internal/volume
 
+
+
 format-volume = <label-volume> <bar-volume>
-label-volume = VOL
+label-volume = 
 label-volume-foreground = ${root.foreground}
 
 format-muted-prefix = " "
@@ -289,25 +314,25 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 type = internal/battery
 battery = BAT0
 adapter = AC0
-full-at = 100
+full-at = 96
 
 format-charging = <animation-charging> <label-charging>
 format-charging-underline = #ffb52a
 format-discharging-underline = #ffb52a
 
 format-discharging = <ramp-capacity> <label-discharging>
-label-charging = Charging %percentage% %time%
+label-charging =  %percentage% %time%
 
 
 
 
-label-discharging = Discharging %percentage% %time%
+label-discharging = %percentage% %time%
 
 
 label-full = Fully charged
 
 format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-prefix-foreground = ${root.foreground}
 format-full-underline = ${self.format-charging-underline}
 
 ramp-capacity-0 = 
@@ -330,43 +355,44 @@ animation-discharging-framerate = 750
 [module/temperature]
 type = internal/temperature
 thermal-zone = 0
-warn-temperature = 60
+warn-temperature = 50
 
-format = <ramp> <label>
+format =  <ramp> <label>
 format-underline = #f50a4d
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}
 
-label = %temperature%
+label =     %temperature%
 label-warn = %temperature%
 label-warn-foreground = ${colors.secondary}
 
 ramp-0 = 
 ramp-1 = 
 ramp-2 = 
-ramp-foreground = ${colors.foreground-alt}
+ramp-foreground = ${root.foreground}
 
 [module/powermenu]
 type = custom/menu
 
-label-open =  Power
+label-open = 
 label-open-foreground = ${colors.secondary}
 label-close =  cancel
 label-close-foreground = ${colors.secondary}
 label-separator = |
 label-separator-foreground = ${colors.foreground-alt}
 
-menu-0-0 = reboot
+menu-0-0 = Reboot
 menu-0-0-exec = menu-open-1
-menu-0-1 = power off
+menu-0-1 = Shutdown
 menu-0-1-exec = menu-open-2
+menu-0-2 = Lock
+menu-0-2-exec = menu-open-3
 
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec =  reboot
+menu-1-0 = Reboot
+menu-1-0-exec =  reboot
 
-menu-2-0 = power off
+menu-2-0 = Shutdown
 menu-2-0-exec =  poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
+
+menu-3-0 = Lock
+menu-3-0-exec = i3lock

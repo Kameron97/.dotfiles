@@ -115,7 +115,7 @@ format-mounted-prefix-foreground = ${root.foreground}
 format-mounted = <label-mounted>
 
 label-mounted =  %used% / %total%
-format-mounted-underline = #4bffdc
+format-mounted-underline = #7FFF00
 
 
 
@@ -317,8 +317,8 @@ adapter = AC0
 full-at = 96
 
 format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
-format-discharging-underline = #ffb52a
+format-charging-underline = #FF8C00
+format-discharging-underline = #FF8C00
 
 format-discharging = <ramp-capacity> <label-discharging>
 label-charging =  %percentage% %time%
@@ -338,18 +338,18 @@ format-full-underline = ${self.format-charging-underline}
 ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
+ramp-capacity-foreground = ${root.foreground}
 
 animation-charging-0 = 
 animation-charging-1 = 
 animation-charging-2 = 
-animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-foreground = ${root.foreground}
 animation-charging-framerate = 750
 
 animation-discharging-0 = 
 animation-discharging-1 = 
 animation-discharging-2 = 
-animation-discharging-foreground = ${colors.foreground-alt}
+animation-discharging-foreground = ${root.foreground}
 animation-discharging-framerate = 750
 
 [module/temperature]
@@ -358,7 +358,7 @@ thermal-zone = 0
 warn-temperature = 50
 
 format =  <ramp> <label>
-format-underline = #f50a4d
+format-underline = #FFFF00
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}
 

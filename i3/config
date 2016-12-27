@@ -185,3 +185,12 @@ bindsym $mod+F4 exec sudo /usr/local/bin/kbd_backlight -e
 
 
 exec polybar example
+
+Browser
+
+bindsym $mod+x exec firefox
+
+bindsym $mod+c exec chromium
+
+# lock
+bindsym $mod+Shift+a exec dm-tool lock 

@@ -1,7 +1,7 @@
 # .dotfiles
 
 My personal setup on my laptop.
-![alt-tag](blob:http://imgur.com/0ee7f0c3-dc18-4bd5-b02d-371b43917214)
+![alt tag](blob:http://imgur.com/0ee7f0c3-dc18-4bd5-b02d-371b43917214)
 
 i3: Has all the vanilla configuration except hardcoded to use xfce4-terminal and also custom macros i enabled for my laptop such as keyboard backlighting (kbd_backlighting) and screen brightness.
 

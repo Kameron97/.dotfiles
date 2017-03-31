@@ -13,10 +13,10 @@ autocmd BufRead,BufWritePre *.sh normal gg=G
 "=================THEMES================"
 syntax on
 " Use vim with light color theme
-set background=dark
+"set background=dark
 
 " Use solarized theme
-colorscheme solarized
+colorscheme lucario
 
 " Set the standard encoding
 set encoding=utf8
@@ -60,7 +60,8 @@ set textwidth=80
 set wildchar=<Tab> wildmenu wildmode=full
 
 " Show the cursor line by default
-set cursorline
+"set cursorline
+
 
 
 
@@ -74,12 +75,18 @@ set cursorline
 "sensible vim"
 runtime! plugin/sensible.vim
 
+
 "NerdTree"
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 
-"NerdCommenter"
-filetype plugin on
+
+
+
+
+"NerdFont"
+set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ 11
+
 
 "Syntastic
 set statusline+=%#warningmsg#
@@ -104,31 +111,97 @@ highlight link SyntasticStyleErrorSign SignColumn
 highlight link SyntasticStyleWarningSign SignColumn
 
 
-
-
 "Lightline"
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
+      \ 'colorscheme': 'solarized',
+      \ 'component': {
+      \   'readonly': '%{&readonly?"":""}',
+      \   'git': '%{fugitive#statusline()}',
+      \ },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' }
       \ }
 
-"Easy Motion""
 
-let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
-nmap s <Plug>(easymotion-overwin-f)
-nmap s <Plug>(easymotion-overwin-f2)
-let g:EasyMotion_smartcase = 1
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
-
-"AIRLINE"
-set laststatus=2
 
 "UNDOTREE"
 if has("persistent_undo")
 	    set undodir=~/.undodir/
 	        set undofile
 	endif
-	
+
+
+"EASYMOTION"
+
+  let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" `s{char}{label}`
+nmap s <Plug>(easymotion-overwin-f)
+" or
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+nmap s <Plug>(easymotion-overwin-f2)
+
+" Turn on case insensitive feature
+let g:EasyMotion_smartcase = 1
+
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+
+
+
+
+
+
 "CTRLP"
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+
+
+
+
+
+
+
+
+"SNIPPETS"
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+
+
+"vim-commentary"
+autocmd FileType apache setlocal commentstring=#\ %s
+
+
+
+
+"nerdcommenter"
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1

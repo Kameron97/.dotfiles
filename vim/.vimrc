@@ -220,5 +220,3 @@ let g:NERDCommentEmptyLines = 1
 
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
-
-"https://i.imgur.com/t62ZRR6.png

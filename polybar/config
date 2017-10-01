@@ -30,7 +30,7 @@ font-2 = Material Design Icons=10;0
 
 modules-left =  date
 modules-center = i3
-modules-right = volume wlan battery
+modules-right = backlight volume wlan battery
 
 tray-position = right
 tray-padding = 2
@@ -72,6 +72,9 @@ format-volume-foreground = #8afd05
 format-volume-background = #26373F
 
 label-muted = 🔇muted
+format-muted-foreground = #8afd05
+format-muted-background = #26373F
+format-muted-underline = #8afd05
 
 
 [module/xwindow]
@@ -108,7 +111,7 @@ label-urgent-padding = 1
 [module/date]
 type = internal/date
 interval = 1
-date = " %A, %d %B  %H:%M"
+date = " %A, %d %B  %r
 
 label-foreground = #f92079
 
@@ -164,7 +167,7 @@ label-disconnected =  %ifname% disconnected
 
 [module/battery]
 type = internal/battery
-full-at = 96
+full-at = 95
 battery = BAT0
 adapter = AC0
 poll-interval = 1
@@ -200,4 +203,25 @@ animation-charging-foreground = #f1ff09
 animation-charging-framerate = 750
 
 
+[module/backlight]
+type = internal/xbacklight
+
+format = <label> <bar>
+label = 
+label-foreground = #ff0000
+format-underline = #ff0000
+
+
+
+
+bar-width = 10
+bar-indicator = │
+bar-indicator-foreground = #ff0000
+bar-indicator-font = 2
+bar-fill = ─
+bar-fill-font = 2
+bar-fill-foreground = #ff0000
+bar-empty = ─
+bar-empty-font = 2
+bar-empty-foreground = #ff0000
 

@@ -146,3 +146,6 @@ POWERLEVEL9K_TIME_BACKGROUND="black"
 POWERLEVEL9K_TIME_FOREGROUND="007"
 
 
+#ALISES
+alias vivado="sudo /opt/Xilinx/Vivado/2016.3/bin/vivado"
+alias vivadoHLS="sudo /opt/Xilinx/Vivado_HLS/2016.3/bin/vivado_hls"

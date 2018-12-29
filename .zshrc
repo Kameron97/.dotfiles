@@ -2,9 +2,8 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/kameron/.oh-my-zsh
+  export ZSH="/home/kameronjeet/.oh-my-zsh"
 
-# Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 POWERLEVEL9K_MODE='awesome-fontconfig'
@@ -54,7 +53,7 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git archlinux github git-extras web-search zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git  github git-extras web-search zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -86,17 +85,17 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-POWERLEVEL9K_MODE='awesome-fontconfig'
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
+POWERLEVEL9K_MODE='awesome-font'
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
 POWERLEVEL9K_HIDE_BRANCH_ICON=true
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=( os_icon background_jobs virtualenv dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status  ram time )
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status ram)
 
-POWERLEVEL9K_TIME_FORMAT='%D{%l:%M %p}'
+#POWERLEVEL9K_TIME_FORMAT='%D{%l:%M}'
 
 
 
-POWERLEVEL9K_HOME_ICON=""
+POWERLEVEL9K_HOME_ICON=""
 POWERLEVEL9K_FOLDER_ICON=""
 POWERLEVEL9K_HOME_SUB_ICON=""
 POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=""
@@ -146,6 +145,4 @@ POWERLEVEL9K_TIME_BACKGROUND="black"
 POWERLEVEL9K_TIME_FOREGROUND="007"
 
 
-#ALISES
-alias vivado="sudo /opt/Xilinx/Vivado/2016.3/bin/vivado"
-alias vivadoHLS="sudo /opt/Xilinx/Vivado_HLS/2016.3/bin/vivado_hls"
+eval $(thefuck --alias)
